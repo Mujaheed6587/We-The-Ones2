@@ -94,22 +94,23 @@
   <script>
     // Demo data: 15 students
     const students = [
-      {reg: 'UG22/SCCS/1011', name: 'mujaheed', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-      {reg: 'UG22/SCCS/1038', name: 'usman nanu', course:'Computer Science',  department: 'Computer Science',', faculty: 'Tech', university: 'GSU'},
-      {reg: 'UG22/SCCS/1043', name: 'bilal garko', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-      {reg: 'UG22/SCCS/1085', name: 'usman adamu', course:'Computer Science', , department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-      {reg: 'UG22/SCCS/1083', name: 'baki', course: 'computer science', department: 'Computer Science', faculty: 'Health', university: 'GSU'},
-      {reg: 'UG22/SCCS/1108', name: 'Faizu babayo', course: 'computer science, department: 'Computer Science', faculty: 'Science', university: GSU'},
-      {reg: 'UG22/SCCS/1100', name: 'aiman nurrundeen', course: 'Economics', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
-      {reg: 'UG22/SCCS/1062', name: 'hashim sharba', course: 'computer science', department: 'computer science', faculty: 'Science', university: 'GSU'},
-      {reg: 'UG22/SCCS/1029', name: 'hauwa plasher', course: 'computer science', department: 'computer science', faculty: 'Arts', university: 'GSU'},
-      {reg: 'UG22/SCCS/1095', name: 'salma gazzy', course: 'computer science', department: 'computer science', faculty: 'Science', university: 'GSU'},
-      {reg: 'REG2025011', name: 'Joy Ijeoma', course: 'Nursing', department: 'Nursing', faculty: 'Health', university: 'OAU Ile-Ife'},
-      {reg: 'REG2025012', name: 'Abubakar Lawal', course: 'Architecture', department: 'Design', faculty: 'Environmental', university: 'Covenant University'},
-      {reg: 'REG2025013', name: 'Maryam Ali', course: 'Statistics', department: 'Mathematics', faculty: 'Science', university: 'UNIJOS'},
-      {reg: 'REG2025014', name: 'David Olamide', course: 'Political Science', department: 'Politics', faculty: 'Social Sciences', university: 'UNILORIN'},
-      {reg: 'REG2025015', name: 'Esther Obi', course: 'Business Admin', department: 'Management', faculty: 'Business', university: 'UNIPORT'},
-    ];
+  {reg: 'UG22/SCCS/1011', name: 'mujaheed', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'UG22/SCCS/1038', name: 'usman nanu', course: 'Computer Science', department: 'Computer Science', faculty: 'Tech', university: 'GSU'},
+  {reg: 'UG22/SCCS/1043', name: 'bilal garko', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'UG22/SCCS/1085', name: 'usman adamu', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'UG22/SCCS/1083', name: 'baki', course: 'Computer Science', department: 'Computer Science', faculty: 'Health', university: 'GSU'},
+  {reg: 'UG22/SCCS/1108', name: 'Faizu babayo', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'UG22/SCCS/1100', name: 'aiman nurrundeen', course: 'Economics', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
+  {reg: 'UG22/SCCS/1062', name: 'hashim sharba', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'UG22/SCCS/1029', name: 'hauwa plasher', course: 'Computer Science', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
+  {reg: 'UG22/SCCS/1095', name: 'salma gazzy', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+  {reg: 'REG2025011', name: 'Joy Ijeoma', course: 'Nursing', department: 'Nursing', faculty: 'Health', university: 'OAU Ile-Ife'},
+  {reg: 'REG2025012', name: 'Abubakar Lawal', course: 'Architecture', department: 'Design', faculty: 'Environmental', university: 'Covenant University'},
+  {reg: 'REG2025013', name: 'Maryam Ali', course: 'Statistics', department: 'Mathematics', faculty: 'Science', university: 'UNIJOS'},
+  {reg: 'REG2025014', name: 'David Olamide', course: 'Political Science', department: 'Politics', faculty: 'Social Sciences', university: 'UNILORIN'},
+  {reg: 'REG2025015', name: 'Esther Obi', course: 'Business Admin', department: 'Management', faculty: 'Business', university: 'UNIPORT'}
+];
+</script>
 
     function findStudent() {
       const regNumber = document.getElementById('regNumber').value.trim().toUpperCase();
