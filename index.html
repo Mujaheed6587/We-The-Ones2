@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>We The Ones</title>
+  <title>We The Ones - Student Lookup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -42,6 +42,7 @@
       border: 1px solid #ff6a00;
       border-radius: 8px;
       font-size: 1rem;
+      box-sizing: border-box;
     }
     button {
       display: block;
@@ -80,44 +81,59 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #555;
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>We The Ones</h1>
     <label for="regNumber">Enter Registration Number:</label>
-    <input type="text" id="regNumber" placeholder="e.g. REG2025001">
-    <button onclick="findStudent()">Show Student Details</button>
+    <input type="text" id="regNumber" placeholder="e.g. REG2025001" autocomplete="off">
+    <button id="showBtn">Show Student Details</button>
     <div id="result"></div>
   </div>
-
+  <div class="footer">
+    &copy; 2025 We The Ones | Student Lookup Demo
+  </div>
   <script>
-    // Demo data: 15 students
+    // Demo student data
     const students = [
-  {reg: 'UG22/SCCS/1011', name: 'mujaheed', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'UG22/SCCS/1038', name: 'usman nanu', course: 'Computer Science', department: 'Computer Science', faculty: 'Tech', university: 'GSU'},
-  {reg: 'UG22/SCCS/1043', name: 'bilal garko', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'UG22/SCCS/1085', name: 'usman adamu', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'UG22/SCCS/1083', name: 'baki', course: 'Computer Science', department: 'Computer Science', faculty: 'Health', university: 'GSU'},
-  {reg: 'UG22/SCCS/1108', name: 'Faizu babayo', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'UG22/SCCS/1100', name: 'aiman nurrundeen', course: 'Economics', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
-  {reg: 'UG22/SCCS/1062', name: 'hashim sharba', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'UG22/SCCS/1029', name: 'hauwa plasher', course: 'Computer Science', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
-  {reg: 'UG22/SCCS/1095', name: 'salma gazzy', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
-  {reg: 'REG2025011', name: 'Joy Ijeoma', course: 'Nursing', department: 'Nursing', faculty: 'Health', university: 'OAU Ile-Ife'},
-  {reg: 'REG2025012', name: 'Abubakar Lawal', course: 'Architecture', department: 'Design', faculty: 'Environmental', university: 'Covenant University'},
-  {reg: 'REG2025013', name: 'Maryam Ali', course: 'Statistics', department: 'Mathematics', faculty: 'Science', university: 'UNIJOS'},
-  {reg: 'REG2025014', name: 'David Olamide', course: 'Political Science', department: 'Politics', faculty: 'Social Sciences', university: 'UNILORIN'},
-  {reg: 'REG2025015', name: 'Esther Obi', course: 'Business Admin', department: 'Management', faculty: 'Business', university: 'UNIPORT'}
-];
-</script>
+      {reg: 'UG22/SCCS/1011', name: 'Mujaheed', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'UG22/SCCS/1038', name: 'Usman Nanu', course: 'Computer Science', department: 'Computer Science', faculty: 'Tech', university: 'GSU'},
+      {reg: 'UG22/SCCS/1043', name: 'Bilal Garko', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'UG22/SCCS/1085', name: 'Usman Adamu', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'UG22/SCCS/1083', name: 'Baki', course: 'Computer Science', department: 'Computer Science', faculty: 'Health', university: 'GSU'},
+      {reg: 'UG22/SCCS/1108', name: 'Faizu Babayo', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'UG22/SCCS/1100', name: 'Aiman Nurrundeen', course: 'Economics', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
+      {reg: 'UG22/SCCS/1062', name: 'Hashim Sharba', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'UG22/SCCS/1029', name: 'Hauwa Plasher', course: 'Computer Science', department: 'Computer Science', faculty: 'Arts', university: 'GSU'},
+      {reg: 'UG22/SCCS/1095', name: 'Salma Gazzy', course: 'Computer Science', department: 'Computer Science', faculty: 'Science', university: 'GSU'},
+      {reg: 'REG2025011', name: 'Joy Ijeoma', course: 'Nursing', department: 'Nursing', faculty: 'Health', university: 'OAU Ile-Ife'},
+      {reg: 'REG2025012', name: 'Abubakar Lawal', course: 'Architecture', department: 'Design', faculty: 'Environmental', university: 'Covenant University'},
+      {reg: 'REG2025013', name: 'Maryam Ali', course: 'Statistics', department: 'Mathematics', faculty: 'Science', university: 'UNIJOS'},
+      {reg: 'REG2025014', name: 'David Olamide', course: 'Political Science', department: 'Politics', faculty: 'Social Sciences', university: 'UNILORIN'},
+      {reg: 'REG2025015', name: 'Esther Obi', course: 'Business Admin', department: 'Management', faculty: 'Business', university: 'UNIPORT'}
+    ];
 
+    /**
+     * Finds and displays student details by registration number.
+     */
     function findStudent() {
-      const regNumber = document.getElementById('regNumber').value.trim().toUpperCase();
-      const student = students.find(s => s.reg === regNumber);
-      const result = document.getElementById('result');
+      const regInput = document.getElementById('regNumber');
+      const regNumber = regInput.value.trim().toUpperCase();
+      const resultDiv = document.getElementById('result');
+
+      // Search for student (case insensitive)
+      const student = students.find(s => s.reg.toUpperCase() === regNumber);
+
       if (student) {
-        result.innerHTML = `
+        resultDiv.innerHTML = `
           <div class="student-details">
             <strong>Name:</strong> ${student.name}<br>
             <strong>Course:</strong> ${student.course}<br>
@@ -127,14 +143,24 @@
           </div>
         `;
       } else {
-        result.innerHTML = `<div class="not-found">Student not found! Please check the registration number.</div>`;
+        resultDiv.innerHTML = `<div class="not-found">Student not found! Please check the registration number.</div>`;
       }
     }
 
-    // Optional: Enter key submits
+    // Button click event
+    document.getElementById('showBtn').addEventListener('click', findStudent);
+
+    // Enter key triggers the lookup
     document.getElementById('regNumber').addEventListener('keyup', function(e) {
-      if(e.key === 'Enter') findStudent();
+      if (e.key === 'Enter') {
+        findStudent();
+      }
     });
+
+    // Autofocus input on page load
+    window.onload = function() {
+      document.getElementById('regNumber').focus();
+    }
   </script>
 </body>
 </html>
